@@ -1,6 +1,6 @@
 defmodule AbsintheReload.ReloadPlug do
-  @template_file "lib/absinthe_reload/whiz_bang.example"
-  @ex_file "lib/absinthe_reload/whiz_bang.ex"
+  @template_file "lib/absinthe_reload/user_schema.example"
+  @ex_file "lib/absinthe_reload/user_schema.ex"
 
   def init(options), do: options
 
@@ -12,7 +12,7 @@ defmodule AbsintheReload.ReloadPlug do
         Code.compile_file(@ex_file)
       else
         IO.inspect("Reloading", label: __MODULE__)
-        IEx.Helpers.r(AbsintheReload.WhizBang)
+        IEx.Helpers.r(AbsintheReload.UserSchema)
       end
 
       IEx.Helpers.r(AbsintheReload.AccountSchema)

@@ -1,7 +1,7 @@
 defmodule AbsintheReload.Macros do
   defmacro dynamic_import_type do
-    if File.exists?("lib/absinthe_reload/whiz_bang.ex") do
-      quote do: import_types(AbsintheReload.WhizBang)
+    if user_type_imported? do
+      quote do: import_types(AbsintheReload.UserSchema)
     else
       quote do
       end
@@ -9,11 +9,15 @@ defmodule AbsintheReload.Macros do
   end
 
   defmacro dynamic_import_fields do
-    if File.exists?("lib/absinthe_reload/whiz_bang.ex") do
+    if user_type_imported? do
       quote do: import_fields(:stitched_fields)
     else
       quote do
       end
     end
+  end
+
+  def user_type_imported? do
+    File.exists?("lib/absinthe_reload/user_schema.ex")
   end
 end

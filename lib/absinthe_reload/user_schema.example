@@ -1,0 +1,13 @@
+defmodule AbsintheReload.UserSchema do
+  use Absinthe.Schema.Notation
+
+  object :stitched_fields do
+    field(:user, :user)
+  end
+
+  object :user do
+    field(:email, :string)
+    field(:ssn, :string)
+    field(:foo, :string)
+  end
+end
